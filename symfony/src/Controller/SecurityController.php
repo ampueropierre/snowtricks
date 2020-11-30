@@ -7,7 +7,6 @@ use App\Form\ForgetPasswordType;
 use App\Form\ResetPasswordType;
 use App\Manager\MailerManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectManager;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
@@ -24,7 +23,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Securite;
 use App\Form\RegistrationFormType;
 use App\Entity\User;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 class SecurityController extends AbstractController
 {
@@ -83,7 +81,6 @@ class SecurityController extends AbstractController
                 )
             );
             $time = time();
-            dd($time,new DateTime());
             $signer = new Sha256();
             $token = (new Builder())
                 ->withClaim('mail', $user->mail)
