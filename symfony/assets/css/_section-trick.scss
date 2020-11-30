@@ -1,0 +1,110 @@
+#trickshow {
+  h3 {
+    font-size: 50px;
+    font-weight: 900;
+  }
+  .category-info {
+    display: inline-block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgba(243, 245, 117, 0.69);
+  }
+  .user-info {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .img-trick {
+    width: 100%;
+  }
+  .trick-describing {
+    font-size: 20px;
+    line-height: 32px;
+    padding: 20px 0;
+    margin: 0;
+  }
+  .box-comment {
+    background-color: #eaeaea;
+    padding: 20px 0;
+    width: 100%;
+    .bloc-no-connected {
+      text-align: center;
+      p {
+        margin: 0 auto;
+        display: inline-block;
+        font-size: 17px;
+        font-weight: 600;
+      }
+    }
+    .bloc-connected {
+      width: 80%;
+      margin: 0 auto;
+      h4 {
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .circle-user {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: grey;
+        background-size: cover;
+        background-position: center;
+      }
+      #comment_form_message {
+        height: 50px;
+        resize: none;
+      }
+      .btn-submit-message {
+        background-color: black;
+        font-weight: 600;
+        padding: 5px 20px;
+        color: #fff;
+        margin: 10px 0;
+      }
+    }
+  }
+  .comment-box {
+    .comment-box-left {
+      margin-right: 15px;
+      .box-image {
+        width: 85px;
+        height: 85px;
+        background-color: grey;
+        border-radius: 50%;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+    .comment-box-right {
+      background-color: #eee;
+      .box-right-comment {
+        padding: 10px 15px;
+        h5 {
+          font-size: 18px;
+          font-weight: 600;
+          display: inline-block;
+          margin-right: 17px;
+        }
+        em {
+          font-size: 14px;
+        }
+        p {
+          margin: 0;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  #images-list {
+    background-color: #fffff8;
+    padding: 15px 0;
+    .img-list {
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.btn-black {
+  color: white;
+  padding: 15px 45px;
+  font-weight: 600;
+  background-color: rgba(0,0,0,.9);
+  text-transform: uppercase;
+  font-size: 13px;
+  &:hover {
+    color: white;
+  }
+}
+
+.btn-edit-trick {
+  color: #fff;
+  background-color: #F17F42;
+  font-weight: 600;
+  padding: 10px 28px;
+  &:hover {
+    color: #fff;
+    background-color: darken(#F17F42, 10%);
+  }
+}
+
+.btn-delete-trick {
+  color: #fff;
+  background-color: #f15c5c;
+  font-weight: 600;
+  padding: 10px 28px;
+  &:hover {
+    color: #fff;
+    background-color: darken(#f15c5c, 10%);
+  }
+}
+
+.btn-scroll {
+  background-color: #5bc6c9 !important;
+}

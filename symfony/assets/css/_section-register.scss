@@ -1,0 +1,28 @@
+#register {
+  min-height: calc(100vh - 60px - 74px);
+  display: flex;
+  .box-register-container {
+    margin: auto;
+    .box-register {
+      margin: 30px;
+      width: 400px;
+      padding: 20px 30px;
+      h2 {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 30px;
+      }
+      .btn-login {
+        color: white;
+        width: 100%;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 18px;
+        background: linear-gradient(45deg,#e66465, #9198e5);
+        border: none;
+        border-radius: 0;
+        margin: 25px 0;
+      }
+    }
+  }
+}

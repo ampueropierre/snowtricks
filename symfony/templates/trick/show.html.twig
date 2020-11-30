@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="trickshow" class="py-5">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% if is_granted('EDIT', trick) %}
+            <div class="row justify-content-center mb-5">
+                <a href="{{ path('edit_trick', {id: trick.id}) }}" class="btn btn-edit-trick mr-3">Modifier la figure</a>
+                <form method="POST" action="{{ path('delete_trick', {id: trick.id}) }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                    <button class="btn btn-delete-trick">Supprimer la figure</button>
+                </form>
+            </div>
+        </div>
+
+        {% endif %}
+        <div class="container">
+            <div class="text-center">
+                <h3>{{ trick.name }}</h3>
+                <p class="category-info">{{ trick.category.name }}</p>
+                <p class="user-info">Par {{ trick.user.fullName }}</p>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-8 mx-auto">
+                    {% set image = trick.imgFilename ? trick.imgFilename : 'trick_default.jpeg' %}
+                    <img src="{{ asset('uploads/trick/'~ image) }}" alt="image principal de la figure" class="img-trick">
+                </div>
+            </div>
+
+            <div class="row">
+                <p class="trick-describing">{{ trick.describing }}</p>
+            </div>
+        </div>
+        {% if gallery is not empty %}
+        <div id="images-list">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <ul id="imageGallery">
+                            {% for item in gallery %}
+                                {% if item.filename starts with 'https' %}
+                                    <li data-thumb="{{ asset('build/images/video_default.png') }}" data-src="img/largeImage.jpg">
+                                        <iframe width="100%" height="355" src="{{ item.filename }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </li>
+                                {% else %}
+                                    <li data-thumb="{{ asset('uploads/trick/' ~ item.filename) }}" data-src="img/largeImage.jpg">
+                                        <img src="{{ asset('uploads/trick/' ~ item.filename) }}" style="width: 100%"/>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="container">
+            <div class="row py-3">
+                <div class="box-comment">
+                    {% if is_granted('ROLE_USER') and app.user.active == true %}
+                        <div class="bloc-connected">
+                            <h4>Laisser un commentaire</h4>
+                            <div class="row d-flex">
+                                <div class="col-1">
+                                    <div class="circle-user" {% if app.user.img is not empty %} style="background-image: url({{ asset('uploads/profil/'~app.user.img) }})" {% endif %}>
+{#                                        {% if app.user.img is not empty %}#}
+{#                                            <img src="{{ asset('uploads/profil/'~app.user.img) }}" alt="Profil photo">#}
+{#                                        {% endif %}#}
+                                    </div>
+                                </div>
+                                <div class="col-11">
+                                    {{ form_start(formComment, {'attr': {'id': 'form_add_comment'}}) }}
+                                        {{ form_widget(formComment.message) }}
+                                        {{ form_errors(formComment.message) }}
+                                    {{ form_end(formComment) }}
+                                </div>
+                            </div>
+                            <button type="submit" form="form_add_comment" class="btn btn-submit-message">Envoyer</button>
+                        </div>
+                    {% else %}
+                        <div class="bloc-no-connected">
+                            <p>Vous devez etre connecter pour laisser un commentaire</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% for comment in comments  %}
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="row py-3">
+                        <article class="comment-box d-flex">
+                            <div class="comment-box-left d-flex align-items-center">
+                                <div class="box-image" {% if comment.user.img is not empty %} style="background-image: url({{ asset('uploads/profil/'~comment.user.img) }})" {% endif %}></div>
+                            </div>
+                            <div class="comment-box-right">
+                                <div class="box-right-comment">
+                                    <h5>{{ comment.user.fullName }}</h5>
+                                    <em>{{ comment.createdAt|date("d M. Y à G:i","Europe/Paris") }}</em>
+                                    <p>{{ comment.message }}</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% include "pagination/index.html.twig" %}
+        </div>
+    </section>
+    
+{% endblock %}

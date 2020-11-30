@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="profil" class="py-5">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <h2>Mon profil</h2>
+
+            <div class="box-img-profil">
+                        <div class="box-img-profil-cirle" {% if app.user.img is not empty %} style="background-image: url({{ asset('uploads/profil/'~app.user.img) }})" {% endif %}>
+
+                </div>
+            </div>
+            {{ form_start(formEdit) }}
+            {{ form_row(formEdit.fullName) }}
+            {{ form_row(formEdit.mail) }}
+            {{ form_row(formEdit.img) }}
+
+            <button type="submit" class="btn btn-black">Modifier</button>
+            {{ form_end(formEdit) }}
+        </div>
+    </section>
+{% endblock %}

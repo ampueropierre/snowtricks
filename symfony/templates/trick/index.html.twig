@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="list-tricks" class="py-5">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <h2>Liste des figures</h2>
+            <div class="row">
+                {% for trick in tricks  %}
+                    {% include 'trick/_card-trick.html.twig'%}
+                {% endfor %}
+            </div>
+            {% include "pagination/index.html.twig" %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+footer {
+  background-color: black;
+  padding: 20px 10px;
+  .logo {
+    color: white;
+    font-weight: 900;
+    font-size: 23px;
+    text-transform: uppercase;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  p {
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0;
+  }
+  .size-logo {
+    width: 30px;
+    margin-left: 10px;
+  }
+}

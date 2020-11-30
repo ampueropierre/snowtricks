@@ -1,0 +1,39 @@
+#main {
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: url(/build/images/main-background.jpg) no-repeat center;
+  background-size: cover;
+  position: relative;
+  .box-main {
+    h1 {
+      color: white;
+      font-size: 50px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 62px;
+    }
+    .btn-main {
+      color: white;
+      font-size: 15px;
+      text-align: center;
+      background-color: #5bc6c9;
+      text-transform: uppercase;
+      font-weight: 900;
+      padding: 30px 45px;
+      margin-top: 80px;
+    }
+  }
+  #clickme {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    -webkit-animation: 3s arrow infinite ease;
+    animation: 3s arrow infinite ease;
+  }
+}

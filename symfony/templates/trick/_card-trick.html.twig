@@ -1,0 +1,14 @@
+<div class="col-md-4 mb-5">
+    <div class="card-trick">
+        <div class="card-top">
+            {% set image = trick.imgFilename ? trick.imgFilename : 'trick_default.jpeg' %}
+            <img src="{{ asset('uploads/trick/' ~ image) }}" alt="img snowboard">
+        </div>
+        <div class="card-trick-box">
+            <h5>{{ trick.category.name }}</h5>
+            <h4>{{ trick.name }}</h4>
+            <p>{{ trick.describing|length > 65 ? trick.describing|slice(0,65) ~ '..' : trick.describing }}</p>
+            <a href="{{ path('show_trick', {slug: trick.slug}) }}" class="btn btn-trick">Voir la figure</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+#profil {
+  min-height: calc(100vh - 60px - 74px);
+  .box-img-profil {
+    margin-bottom: 30px;
+    .box-img-profil-cirle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: grey;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  h2 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+}

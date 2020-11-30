@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="add-trick" class="py-5">
+        <div class="container">
+            <h2>Ajouter une figure de snowboard</h2>
+            {{ include ('trick/_form.html.twig', {form: form}) }}
+        </div>
+    </section>
+
+{% endblock %}

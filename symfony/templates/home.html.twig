@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="main">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="box-main">
+                    <h1>Découvrez, Partagez, Échangez<br>
+                    Bienvenue dans la communauté</h1>
+                    <a href="{{ path('index_trick') }}" class="btn btn-main">Voir la liste des figures</a>
+                </div>
+                <a href="#last-trick" id="clickme"></a>
+            </div>
+        </div>
+    </div>
+    <section id="last-trick" class="p-5">
+        <div class="container">
+            <h3>Les dernières figures</h3>
+            <div class="row no-gutter">
+                {% for trick in tricks %}
+                    {% include 'trick/_card-trick.html.twig'%}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

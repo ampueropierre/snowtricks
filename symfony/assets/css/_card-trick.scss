@@ -1,0 +1,38 @@
+.card-trick {
+  text-align: center;
+  transition-duration: 1s;
+  margin-bottom: 15px;
+  &:hover {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  }
+  img {
+    width: 100%;
+  }
+  .card-trick-box {
+    padding: 0px 10px;
+    h5 {
+      position: relative;
+      top: -20px;
+      display: inline-block;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 20px;
+      background-color: rgba(243, 245, 117, 0.69);
+    }
+    h4 {
+      font-weight: 600;
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+    .btn-trick {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 50px;
+      border: 1px solid #519d9e;
+      color: #519d9e;
+      margin-bottom: 25px;
+    }
+  }
+
+}

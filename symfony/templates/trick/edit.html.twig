@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="edit-trick" class="py-5">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <h2>Modifier la figure de snowboard</h2>
+            <a href="{{ path('show_trick', {slug: trick.slug}) }}" class="link-edit">Lien de la figure</a>
+            <form method="POST" action="{{ path('delete_trick', {id: trick.id}) }}" class="d-inline">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                <a class="link-delete" type="submit">Supprimer la figure</a>
+            </form>
+            {{ include ('trick/_form.html.twig', {form: form, button: 'Modifier'}) }}
+        </div>
+    </section>
+
+{% endblock %}
