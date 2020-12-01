@@ -9,6 +9,7 @@ parameters:
     app.limit_trick: 10
     app.limit_comment: 10
     key_token: '%env(PRIVATE_KEY)%'
+    user_password: '%env(USER_PASSWORD)%'
 services:
     # default configuration for services in *this* file
     _defaults:

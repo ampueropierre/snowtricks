@@ -8,6 +8,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class AppFixtures extends Fixture
 {
@@ -17,11 +18,18 @@ class AppFixtures extends Fixture
     private $encoder;
 
     /**
-     * @param UserPasswordEncoderInterface $encoder
+     * @var ParameterBagInterface
      */
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    private $parameterBag;
+
+    /**
+     * @param UserPasswordEncoderInterface $encoder
+     * @param ParameterBagInterface $parameterBag
+     */
+    public function __construct(UserPasswordEncoderInterface $encoder, ParameterBagInterface $parameterBag)
     {
         $this->encoder = $encoder;
+        $this->parameterBag = $parameterBag;
     }
 
     /**
@@ -38,7 +46,7 @@ class AppFixtures extends Fixture
         $user->setMail("admin@snowtricks.com");
         $user->setCreatedAt(new \DateTime());
         $user->setModifiedAt(new \DateTime());
-        $password = $this->encoder->encodePassword($user, 'admin');
+        $password = $this->encoder->encodePassword($user, $this->parameterBag->get('user_password'));
         $user->setPassword($password);
         $user->setActive(true);
         $manager->persist($user);
